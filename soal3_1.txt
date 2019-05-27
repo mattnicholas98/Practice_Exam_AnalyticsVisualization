@@ -1,0 +1,84 @@
+Soal 3.1 - Dosen & Mahasiswa
+-----------------------------
+
+1. >> use Kampus
+
+2. >> db.createUser({
+    user: "andi",
+    pwd: "anditopsecret",
+    roles: ["dbAdmin"]
+})
+
+3. >> db.createUser({
+    user: "budi",
+    pwd: "buditopsecret",
+    roles: ["readWrite"]
+})
+
+4. >> db.createCollection('Dosen')
+
+5. >> db.createCollection('Mahasiswa')
+
+6. >> db.Dosen.insert(
+    [
+        {
+            nama: "Caca",
+            usia: 28,
+            asal: "Jakarta",
+            bidang: "Fisika Astrologi",
+            titel: "S2",
+            status: "Honorer",
+            nip: 123,
+            matkul: ["Metrologi", "Kosmologi", "Kalkulus"]
+        },
+        {
+            nama: "Dedi",
+            usia: 29,
+            asal: "Yogyakarta",
+            bidang: "Fisika Terapan",
+            titel: "S3",
+            status: "PNS",
+            nip: 456,
+            matkul: ["Intrumentasi", "Elektronika", "Fisika Dasar"]
+        },
+        {
+            nama: "Euis",
+            usia: 30,
+            asal: "Bandung",
+            bidang: "Fisika Teoretik",
+            titel: "S1",
+            status: "Honorer",
+            nip: 789,
+            matkul: ["Fisika Dasar", "Fisika Modern", "Kalkulus"]
+        }    
+    ]
+)
+
+7. >> db.Mahasiswa.insert(
+    [
+        {
+            nama: "Faza",
+            usia: 19,
+            asal: "Aceh",
+            prodi: "Fisika",
+            angkatan: 2017,
+            nim: 123
+        },
+        {
+            nama: "Gilang",
+            usia: 20,
+            asal: "Semarang",
+            prodi: "Fisika",
+            angkatan: 2017,
+            nim: 456
+        },
+        {
+            nama: "Hanafi",
+            usia: 19,
+            asal: "Makassar",
+            prodi: "Fisika",
+            angkatan: 2017,
+            nim: 789
+        }    
+    ]
+)

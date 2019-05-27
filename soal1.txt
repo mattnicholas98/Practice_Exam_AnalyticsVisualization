@@ -1,0 +1,98 @@
+Soal 1 - MySQL database
+-------------------------
+
+1. >> create database sekolahku;
+
+2. >> use sekolahku;
+
+3. >> create table users(
+	-> id int(11) not null auto_increment,
+	-> username varchar(50) not null,
+	-> email varchar(50) not null,
+	-> password varchar(50) not null,
+	-> created_at timestamp default current_timestamp,
+	-> updated_at timestamp default current_timestamp on update current_timestamp,
+	-> primary key (id)
+	-> );
+
+4. >> insert into karyawan values
+	-> ('Andi', 'andi@andi.com', '12345'),
+	-> ('Budi', 'budi@budi.com', '67890'),
+	-> ('Caca', 'caca@caca.com', 'abcde'),
+	-> ('Deni', 'deni@deni.com', 'fghij'),
+	-> ('Euis', 'euis@euis.com', 'klmno'),
+	-> ('Fafa', 'fafa@fafa.com', 'pqrst');
+
+5. >> create table courses(
+	-> id int(11) auto_increment,
+	-> course varchar(50) not null,
+	-> mentor varchar(50) not null,
+	-> title varchar(50) not null,
+	-> primary key (id)
+	-> );
+
+6. >> insert into courses (course, mentor, title) values
+	-> ('C++', 'Ari', 'Dr.'),
+	-> ('C#', 'Ari', 'Dr.'),
+	-> ('C#', 'Ari', 'Dr.'),
+	-> ('CSS', 'Cania', 'S.Kom'),
+	-> ('HTML', 'Cania', 'S.Kom'),
+	-> ('Javascript', 'Cania', 'S.Kom'),
+	-> ('Python', 'Barry', 'S.T.'),
+	-> ('Micropython', 'Barry', 'S.T.'),
+	-> ('Java', 'Darren', 'M.T.'),
+	-> ('Ruby', 'Darren', 'M.T.');
+
+7. >> create table userCourse(
+	-> id_user int(11),
+	-> id_course int(11)
+	-> );
+
+8. >> insert into userCourse values
+	-> (1, 1),
+	-> (1, 2),
+	-> (1, 3),
+	-> (2, 4),
+	-> (2, 5),
+	-> (2, 6),
+	-> (3, 7),
+	-> (3, 8),
+	-> (3, 9),
+	-> (4, 1),
+	-> (4, 3),
+	-> (4, 5),
+	-> (5, 2),
+	-> (5, 4),
+	-> (5, 6),
+	-> (6, 7),
+	-> (6, 8),
+	-> (6, 9);
+
+9. >> select users.id, username, course, mentor, title
+	-> from courses, usercourse, users
+	-> where userCourse.id_user = users.id
+	-> and userCourse.id_course = courses.id;
+
+10. >> select users.id, username, course, mentor, title
+	-> from courses, usercourse, users
+	-> where userCourse.id_user = users.id
+	-> and userCourse.id_course = courses.id
+	-> and courses.title like 'S.%';
+
+11. >> select user.id, username, course, mentor, title
+	-> from courses, usercourse, users
+	-> where userCourse.id_user = users.id
+	-> and userCourse.id_course = courses.id
+	-> and courses.title not like 'S.%';
+
+12. >> select course, mentor, title, count(course) as jumlah_peserta
+	-> from users, userCourse, courses
+	-> where users.id = userCourse.id_user
+	-> and courses.id = userCourse.id_course
+	-> group by course;
+
+13. >> select mentor, count(mentor) as jumlah_peserta, count(mentor)*200000 as total_fee
+	-> from users, userCourse, courses
+	-> where users.id = userCourse.id_user
+	-> and courses.id = userCourse.id_course
+	-> group by mentor;
